@@ -28,3 +28,11 @@ void memMoveSingle(Register *reg1, Register *reg2){
 void memMoveDouble (DRegister *reg1, DRegister *reg2){
 	reg1->value = reg2->value;
 }
+
+void memAddSingle (Register *reg1, Register *reg2){
+	reg1->value = reg1->value + reg2->value;
+}
+
+void memAddDouble (DRegister *reg1, DRegister *reg2){
+	reg1->value = reg1->value + reg2->value;
+}

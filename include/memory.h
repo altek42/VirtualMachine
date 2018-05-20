@@ -48,7 +48,11 @@ unsigned char getNextByte(Memory* mem);
 
 void memSetInt (Register *reg, Memory *memory);
 void memSetDouble (DRegister *reg, Memory *memory);
+
 void memMoveSingle (Register *reg1, Register *reg2);
 void memMoveDouble (DRegister *reg1, DRegister *reg2);
+
+void memAddSingle (Register *reg1, Register *reg2);
+void memAddDouble (DRegister *reg1, DRegister *reg2);
 
 #endif //MEMORY_H
