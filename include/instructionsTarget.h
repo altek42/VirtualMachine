@@ -1,0 +1,87 @@
+#ifndef INSTRUCTION_TARGET_H
+#define INSTRUCTION_TARGET_H
+
+#define IT_R0 0x10
+#define IT_R1 0x11
+#define IT_R2 0x12
+#define IT_R3 0x13
+#define IT_R0L 0x14
+#define IT_R0H 0x15
+#define IT_R1L 0x16
+#define IT_R1H 0x17
+#define IT_R2L 0x18
+#define IT_R2H 0x19
+#define IT_R3L 0x1a
+#define IT_R3H 0x1b
+
+#define IT_R0_R1 0x1c
+#define IT_R0_R2 0x1d
+#define IT_R0_R3 0x1e
+#define IT_R1_R0 0x1f
+#define IT_R1_R2 0x20
+#define IT_R1_R3 0x21
+#define IT_R2_R0 0x22
+#define IT_R2_R1 0x23
+#define IT_R2_R3 0x24
+#define IT_R3_R0 0x25
+#define IT_R3_R1 0x26
+#define IT_R3_R2 0x27
+
+#define IT_R0L_R0H 0x28
+#define IT_R0L_R1L 0x29
+#define IT_R0L_R1H 0x2a
+#define IT_R0L_R2L 0x2b
+#define IT_R0L_R2H 0x2c
+#define IT_R0L_R3L 0x2d
+#define IT_R0L_R3H 0x2e
+#define IT_R0H_R0L 0x2f
+#define IT_R0H_R1L 0x30
+#define IT_R0H_R1H 0x31
+#define IT_R0H_R2L 0x32
+#define IT_R0H_R2H 0x33
+#define IT_R0H_R3L 0x34
+#define IT_R0H_R3H 0x35
+#define IT_R1L_R0L 0x36
+#define IT_R1L_R0H 0x37
+#define IT_R1L_R1H 0x38
+#define IT_R1L_R2L 0x39
+#define IT_R1L_R2H 0x3a
+#define IT_R1L_R3L 0x3b
+#define IT_R1L_R3H 0x3c
+#define IT_R1H_R0L 0x3d
+#define IT_R1H_R0H 0x3e
+#define IT_R1H_R1L 0x3f
+#define IT_R1H_R2L 0x40
+#define IT_R1H_R2H 0x41
+#define IT_R1H_R3L 0x42
+#define IT_R1H_R3H 0x43
+#define IT_R2L_R0L 0x44
+#define IT_R2L_R0H 0x45
+#define IT_R2L_R1L 0x46
+#define IT_R2L_R1H 0x47
+#define IT_R2L_R2H 0x48
+#define IT_R2L_R3L 0x49
+#define IT_R2L_R3H 0x4a
+#define IT_R2H_R0L 0x4b
+#define IT_R2H_R0H 0x4c
+#define IT_R2H_R1L 0x4d
+#define IT_R2H_R1H 0x4e
+#define IT_R2H_R2L 0x4f
+#define IT_R2H_R3L 0x50
+#define IT_R2H_R3H 0x51
+#define IT_R3L_R0L 0x52
+#define IT_R3L_R0H 0x53
+#define IT_R3L_R1L 0x54
+#define IT_R3L_R1H 0x55
+#define IT_R3L_R2L 0x56
+#define IT_R3L_R2H 0x57
+#define IT_R3L_R3H 0x58
+#define IT_R3H_R0L 0x59
+#define IT_R3H_R0H 0x5a
+#define IT_R3H_R1L 0x5b
+#define IT_R3H_R1H 0x5c
+#define IT_R3H_R2L 0x5d
+#define IT_R3H_R2H 0x5e
+#define IT_R3H_R3L 0x5f
+
+#endif //INSTRUCTION_TARGET_H

@@ -1,0 +1,16 @@
+#ifndef ERROR_CODE_H
+#define ERROR_CODE_H
+
+#define OK 0
+
+#define ERR_ARG_COUNT 100
+
+//FILE ERR
+#define ERR_CAN_NOT_OPEN_FILE 200
+#define ERR_CAN_NOT_MALLOC_FILE 201
+
+//bytecode
+#define ERR_UNRECOGNIZED_INSTRUCTION 300
+#define ERR_END_OF_INSTRUCTIONS 301
+
+#endif //ERROR_CODE_H

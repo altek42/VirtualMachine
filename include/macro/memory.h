@@ -1,0 +1,4 @@
+#ifndef MEMORY_MACROS_H
+#define MEMORY_MACROS_H
+
+#endif //MEMORY_MACROS_H
