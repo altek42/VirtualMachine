@@ -1,7 +1,6 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
-#include<stddef.h>
 #include<stdio.h>
 #include "macro/memory.h"
 #include "error.h"
@@ -35,13 +34,13 @@ union __double_register{
 typedef union __double_register DRegister;
 
 struct __memory{
-	Register R0;
-	Register R1;
-	Register R2;
-	Register R3;
-	size_t PC;
+	DRegister RA;
+	DRegister RB;
+	DRegister RC;
+	DRegister RD;
+	unsigned int PC;
 	unsigned char* bytecode;
-	size_t PCS;
+	unsigned int PCS;
 } __attribute__((packed));
 typedef struct __memory Memory;
 
