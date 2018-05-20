@@ -83,4 +83,15 @@ case IT_DH_CL: funcName(&memory->RD.high,&memory->RC.low);	break; \
 case IT_DH_CH: funcName(&memory->RD.high,&memory->RC.high);	break; \
 case IT_DH_DL: funcName(&memory->RD.high,&memory->RD.low);	break;
 
+#define _EXECUTE_MEM_FUNC(opr) \
+void executeMem##opr(Memory* memory) { \
+	unsigned char byte = getNextByte(memory); \
+	switch (byte) { \
+		_CASE_ALL_DOUBLE_REG(mem##opr##Double,memory) \
+		_CASE_ALL_SINGLE_REG(mem##opr##Single,memory) \
+		default: exitErr(ERR_UNRECOGNIZED_INSTRUCTION, memory->PC); \
+	} \
+}
+
+
 #endif //CORE_MACROS_H

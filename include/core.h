@@ -13,5 +13,8 @@ void Program(Memory* memory);
 unsigned char execute(unsigned char instruction, Memory* memory);
 void executeMemMov(Memory* memory);
 void executeMemAdd(Memory* memory);
+void executeMemSub(Memory* memory);
+void executeMemMul(Memory* memory);
+void executeMemDiv(Memory* memory);
 
 #endif //CORE_H

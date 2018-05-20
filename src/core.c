@@ -17,6 +17,9 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 
 		case PR_MOV: executeMemMov(memory); break;
 		case PR_ADD: executeMemAdd(memory); break;
+		case PR_SUB: executeMemSub(memory); break;
+		case PR_MUL: executeMemMul(memory); break;
+		case PR_DIV: executeMemDiv(memory); break;
 
 		case PR_SET_AX: memSetDouble(&memory->RA,memory);	break;
 		case PR_SET_BX: memSetDouble(&memory->RB,memory);	break;
@@ -39,22 +42,8 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 	return 0b1;
 }
 
-void executeMemMov(Memory* memory) {
-	unsigned char byte = getNextByte(memory);
-	switch (byte) {
-		_CASE_ALL_DOUBLE_REG(memMoveDouble,memory)
-		_CASE_ALL_SINGLE_REG(memMoveSingle,memory)
-
-		default: exitErr(ERR_UNRECOGNIZED_INSTRUCTION, memory->PC);
-	}
-}
-
-void executeMemAdd(Memory* memory){
-	unsigned char byte = getNextByte(memory);
-	switch (byte) {
-		_CASE_ALL_DOUBLE_REG(memAddDouble,memory)
-		_CASE_ALL_SINGLE_REG(memAddSingle,memory)
-
-		default: exitErr(ERR_UNRECOGNIZED_INSTRUCTION, memory->PC);
-	}
-}
+_EXECUTE_MEM_FUNC(Mov)
+_EXECUTE_MEM_FUNC(Add)
+_EXECUTE_MEM_FUNC(Sub)
+_EXECUTE_MEM_FUNC(Mul)
+_EXECUTE_MEM_FUNC(Div)

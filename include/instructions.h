@@ -9,11 +9,13 @@
 #define PR_PRINT_STR	0x13
 #define PR_SCAN 	0x14
 #define PR_ALLOC	0x15
+
 #define PR_MOV	0x16
 #define PR_ADD	0x17
 #define PR_SUB	0x18
 #define PR_MUL	0x19
 #define PR_DIV	0x1a
+
 #define PR_MOD	0x1b
 #define PR_OR	0x1c
 #define PR_AND	0x1d
