@@ -21,6 +21,10 @@ void memSetDouble (DRegister *reg, Memory *memory){
 	memSetInt(&reg->high,memory);
 }
 
-void move_reg_reg (Register *reg1, Register *reg2){
+void memMoveSingle(Register *reg1, Register *reg2){
+	reg1->value = reg2->value;
+}
+
+void memMoveDouble (DRegister *reg1, DRegister *reg2){
 	reg1->value = reg2->value;
 }

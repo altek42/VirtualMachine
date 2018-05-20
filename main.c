@@ -7,8 +7,8 @@ int main(int argc, char const *argv[]) {
 	if(argc < 2){
 		exitErr(ERR_ARG_COUNT,-1);
 	}
-	printf("FILE: %s\n", argv[1]);
-	
+	// printf("FILE: %s\n", argv[1]);
+
 	FILE* f = openFile(argv[1]);
 	size_t size;
 	unsigned char* bytecode = readFile(f,&size);
