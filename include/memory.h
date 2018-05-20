@@ -46,7 +46,8 @@ typedef struct __memory Memory;
 
 unsigned char getNextByte(Memory* mem);
 
-void move_reg_int (Register *reg, Memory *memory);
+void memSetInt (Register *reg, Memory *memory);
+void memSetDouble (DRegister *reg, Memory *memory);
 void move_reg_reg (Register *reg1, Register *reg2);
 
 #endif //MEMORY_H

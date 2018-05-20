@@ -1,8 +1,8 @@
 #include "../include/error.h"
 #include "../include/errorCode.h"
 
-void exitErr(int code){
-	fprintf(stderr, "\nError: %d: %s\n", code, __getErrMsg(code));
+void exitErr(const int code, const unsigned int pc){
+	fprintf(stderr, "\nError: %d: %s (PC: 0x%x)\n", code, __getErrMsg(code), pc);
 	exit(code);
 }
 
@@ -13,6 +13,7 @@ char* __getErrMsg(int code){
 		CASE_RET(ERR_CAN_NOT_MALLOC_FILE, "Can not allocate memory for input file.");
 		CASE_RET(ERR_UNRECOGNIZED_INSTRUCTION, "Unrecognized instruction.");
 		CASE_RET(ERR_END_OF_INSTRUCTIONS, "Unexpected end of instructions.");
+		CASE_RET(ERR_NO_IMPLEMENTATION, "No implementation yet.");
 	}
 	return "";
 }

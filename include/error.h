@@ -6,7 +6,7 @@
 #include "errorCode.h"
 #include "macro/error.h"
 
-void exitErr(int code);
+void exitErr(const int code, const unsigned int pc);
 char* __getErrMsg(int code);
 
 #endif //ERROR_H

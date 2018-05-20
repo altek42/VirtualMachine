@@ -3,7 +3,7 @@
 FILE* openFile(const char* fileName){
 	FILE* file = fopen(fileName,"rb");
 	if (!file){
-		exitErr(ERR_CAN_NOT_OPEN_FILE);
+		exitErr(ERR_CAN_NOT_OPEN_FILE,-1);
 	}
 	return file;
 }
@@ -16,7 +16,7 @@ unsigned char* readFile(FILE* fp, size_t* fileSize){
 		sizeof(unsigned char)* (*fileSize)
 	);
 	if(!program){
-		exitErr(ERR_CAN_NOT_MALLOC_FILE);
+		exitErr(ERR_CAN_NOT_MALLOC_FILE,-1);
 	}
 	size_t size = fread(
 		program,
