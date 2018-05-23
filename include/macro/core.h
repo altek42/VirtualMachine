@@ -102,4 +102,88 @@ void executeMem##opr(Memory* memory) { \
 	} \
 }
 
+#define _CASE_ALL_DOUBLE_JMP(funcName,pos,memory) \
+case IT_AX_BX: funcName(pos,&memory->RA,&memory->RB,memory);	break; \
+case IT_AX_CX: funcName(pos,&memory->RA,&memory->RC,memory);	break; \
+case IT_AX_DX: funcName(pos,&memory->RA,&memory->RD,memory);	break; \
+case IT_BX_AX: funcName(pos,&memory->RB,&memory->RA,memory);	break; \
+case IT_BX_CX: funcName(pos,&memory->RB,&memory->RC,memory);	break; \
+case IT_BX_DX: funcName(pos,&memory->RB,&memory->RD,memory);	break; \
+case IT_CX_AX: funcName(pos,&memory->RC,&memory->RA,memory);	break; \
+case IT_CX_BX: funcName(pos,&memory->RC,&memory->RB,memory);	break; \
+case IT_CX_DX: funcName(pos,&memory->RC,&memory->RD,memory);	break; \
+case IT_DX_AX: funcName(pos,&memory->RD,&memory->RA,memory);	break; \
+case IT_DX_BX: funcName(pos,&memory->RD,&memory->RB,memory);	break; \
+case IT_DX_CX: funcName(pos,&memory->RD,&memory->RC,memory);	break;
+
+#define _CASE_ALL_SINGLE_JMP(funcName,pos,memory) \
+case IT_AL_AH: funcName(pos,&memory->RA.low,&memory->RA.high,memory);	break; \
+case IT_AL_BL: funcName(pos,&memory->RA.low,&memory->RB.low,memory);	break; \
+case IT_AL_BH: funcName(pos,&memory->RA.low,&memory->RB.high,memory);	break; \
+case IT_AL_CL: funcName(pos,&memory->RA.low,&memory->RC.low,memory);	break; \
+case IT_AL_CH: funcName(pos,&memory->RA.low,&memory->RC.high,memory);	break; \
+case IT_AL_DL: funcName(pos,&memory->RA.low,&memory->RD.low,memory);	break; \
+case IT_AL_DH: funcName(pos,&memory->RA.low,&memory->RD.high,memory);	break; \
+case IT_AH_AL: funcName(pos,&memory->RA.high,&memory->RA.low,memory);	break; \
+case IT_AH_BL: funcName(pos,&memory->RA.high,&memory->RB.low,memory);	break; \
+case IT_AH_BH: funcName(pos,&memory->RA.high,&memory->RB.high,memory);	break; \
+case IT_AH_CL: funcName(pos,&memory->RA.high,&memory->RC.low,memory);	break; \
+case IT_AH_CH: funcName(pos,&memory->RA.high,&memory->RC.high,memory);	break; \
+case IT_AH_DL: funcName(pos,&memory->RA.high,&memory->RD.low,memory);	break; \
+case IT_AH_DH: funcName(pos,&memory->RA.high,&memory->RD.high,memory);	break; \
+case IT_BL_AL: funcName(pos,&memory->RB.low,&memory->RA.low,memory);	break; \
+case IT_BL_AH: funcName(pos,&memory->RB.low,&memory->RA.high,memory);	break; \
+case IT_BL_BH: funcName(pos,&memory->RB.low,&memory->RB.high,memory);	break; \
+case IT_BL_CL: funcName(pos,&memory->RB.low,&memory->RC.low,memory);	break; \
+case IT_BL_CH: funcName(pos,&memory->RB.low,&memory->RC.high,memory);	break; \
+case IT_BL_DL: funcName(pos,&memory->RB.low,&memory->RD.low,memory);	break; \
+case IT_BL_DH: funcName(pos,&memory->RB.low,&memory->RD.high,memory);	break; \
+case IT_BH_AL: funcName(pos,&memory->RB.high,&memory->RA.low,memory);	break; \
+case IT_BH_AH: funcName(pos,&memory->RB.high,&memory->RA.high,memory);	break; \
+case IT_BH_BL: funcName(pos,&memory->RB.high,&memory->RB.low,memory);	break; \
+case IT_BH_CL: funcName(pos,&memory->RB.high,&memory->RC.low,memory);	break; \
+case IT_BH_CH: funcName(pos,&memory->RB.high,&memory->RC.high,memory);	break; \
+case IT_BH_DL: funcName(pos,&memory->RB.high,&memory->RD.low,memory);	break; \
+case IT_BH_DH: funcName(pos,&memory->RB.high,&memory->RD.high,memory);	break; \
+case IT_CL_AL: funcName(pos,&memory->RC.low,&memory->RA.low,memory);	break; \
+case IT_CL_AH: funcName(pos,&memory->RC.low,&memory->RA.high,memory);	break; \
+case IT_CL_BL: funcName(pos,&memory->RC.low,&memory->RB.low,memory);	break; \
+case IT_CL_BH: funcName(pos,&memory->RC.low,&memory->RB.high,memory);	break; \
+case IT_CL_CH: funcName(pos,&memory->RC.low,&memory->RC.high,memory);	break; \
+case IT_CL_DL: funcName(pos,&memory->RC.low,&memory->RD.low,memory);	break; \
+case IT_CL_DH: funcName(pos,&memory->RC.low,&memory->RD.high,memory);	break; \
+case IT_CH_AL: funcName(pos,&memory->RC.high,&memory->RA.low,memory);	break; \
+case IT_CH_AH: funcName(pos,&memory->RC.high,&memory->RA.high,memory);	break; \
+case IT_CH_BL: funcName(pos,&memory->RC.high,&memory->RB.low,memory);	break; \
+case IT_CH_BH: funcName(pos,&memory->RC.high,&memory->RB.high,memory);	break; \
+case IT_CH_CL: funcName(pos,&memory->RC.high,&memory->RC.low,memory);	break; \
+case IT_CH_DL: funcName(pos,&memory->RC.high,&memory->RD.low,memory);	break; \
+case IT_CH_DH: funcName(pos,&memory->RC.high,&memory->RD.high,memory);	break; \
+case IT_DL_AL: funcName(pos,&memory->RD.low,&memory->RA.low,memory);	break; \
+case IT_DL_AH: funcName(pos,&memory->RD.low,&memory->RA.high,memory);	break; \
+case IT_DL_BL: funcName(pos,&memory->RD.low,&memory->RB.low,memory);	break; \
+case IT_DL_BH: funcName(pos,&memory->RD.low,&memory->RB.high,memory);	break; \
+case IT_DL_CL: funcName(pos,&memory->RD.low,&memory->RC.low,memory);	break; \
+case IT_DL_CH: funcName(pos,&memory->RD.low,&memory->RC.high,memory);	break; \
+case IT_DL_DH: funcName(pos,&memory->RD.low,&memory->RD.high,memory);	break; \
+case IT_DH_AL: funcName(pos,&memory->RD.high,&memory->RA.low,memory);	break; \
+case IT_DH_AH: funcName(pos,&memory->RD.high,&memory->RA.high,memory);	break; \
+case IT_DH_BL: funcName(pos,&memory->RD.high,&memory->RB.low,memory);	break; \
+case IT_DH_BH: funcName(pos,&memory->RD.high,&memory->RB.high,memory);	break; \
+case IT_DH_CL: funcName(pos,&memory->RD.high,&memory->RC.low,memory);	break; \
+case IT_DH_CH: funcName(pos,&memory->RD.high,&memory->RC.high,memory);	break; \
+case IT_DH_DL: funcName(pos,&memory->RD.high,&memory->RD.low,memory);	break;
+
+
+#define _EXECUTE_MEM_JMP(opr) \
+void executeMem##opr(Memory* memory) { \
+	unsigned char byte = getNextByte(memory); \
+	dword dw = getNextDword(memory); \
+	switch (byte) { \
+		_CASE_ALL_DOUBLE_JMP(mem##opr##Double,dw.value,memory) \
+		_CASE_ALL_SINGLE_JMP(mem##opr##Single,dw.value,memory) \
+		default: exitErr(ERR_UNRECOGNIZED_INSTRUCTION, memory->PC); \
+	} \
+}
+
 #endif //CORE_MACROS_H

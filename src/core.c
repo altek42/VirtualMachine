@@ -67,6 +67,4 @@ void executeMemJmp(Memory* memory){
 	memJmp(dw.value,memory);
 }
 
-void executeMemJeq(Memory* memory){
-	
-}
+_EXECUTE_MEM_JMP(Jeq)

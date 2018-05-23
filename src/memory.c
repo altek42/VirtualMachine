@@ -82,3 +82,21 @@ void memJmp(unsigned int pos, Memory* memory){
 	}
 	memory->PC = pos;
 }
+
+void memJeqDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
+	if(pos > memory->PCS){
+		exitErr(ERR_JMP_SKIP_INSTRUCTIONS,memory->PC);
+	}
+	if(reg1->value == reg2->value){
+		memory->PC = pos;
+	}
+}
+
+void memJeqSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
+	if(pos > memory->PCS){
+		exitErr(ERR_JMP_SKIP_INSTRUCTIONS,memory->PC);
+	}
+	if(reg1->value == reg2->value){
+		memory->PC = pos;
+	}
+}
