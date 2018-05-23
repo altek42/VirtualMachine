@@ -21,4 +21,7 @@ void executeMemOr(Memory* memory);
 void executeMemAnd(Memory* memory);
 void executeMemXor(Memory* memory);
 
+void executeMemJmp(Memory* memory);
+void executeMemJeq(Memory* memory);
+
 #endif //CORE_H

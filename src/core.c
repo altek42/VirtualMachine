@@ -26,6 +26,9 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		case PR_AND: executeMemAnd(memory); break;
 		case PR_XOR: executeMemXor(memory); break;
 
+		case PR_JMP: executeMemJmp(memory); break;
+		case PR_JEQ: executeMemJeq(memory); break;
+
 		case PR_SET_AX: memSetDouble(&memory->RA,memory);	break;
 		case PR_SET_BX: memSetDouble(&memory->RB,memory);	break;
 		case PR_SET_CX: memSetDouble(&memory->RC,memory);	break;
@@ -40,6 +43,7 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		case PR_SET_DL: memSetInt(&memory->RD.low,memory);	break;
 		case PR_SET_DH: memSetInt(&memory->RD.high,memory);	break;
 
+		case PR_NONE: break;
 		case PR_EXIT: return 0b0;
 		default:
 			exitErr(ERR_UNRECOGNIZED_INSTRUCTION, memory->PC);
@@ -57,3 +61,12 @@ _EXECUTE_MEM_SINGLE_FUNC(Mod)
 _EXECUTE_MEM_SINGLE_FUNC(Or)
 _EXECUTE_MEM_SINGLE_FUNC(And)
 _EXECUTE_MEM_SINGLE_FUNC(Xor)
+
+void executeMemJmp(Memory* memory){
+	dword dw = getNextDword(memory);
+	memJmp(dw.value,memory);
+}
+
+void executeMemJeq(Memory* memory){
+	
+}

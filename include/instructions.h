@@ -2,6 +2,7 @@
 #define INSTRUCTIONS_H
 
 #define PR_EXIT	0x00
+#define PR_NONE	0xFF
 
 #define PR_PRINT_INT	0x10
 #define PR_PRINT_DOU	0x11

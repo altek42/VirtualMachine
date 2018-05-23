@@ -23,6 +23,7 @@ union __dword{
 	};
 };
 typedef union __dword Register;
+typedef union __dword dword;
 
 union __double_register{
 	double value;
@@ -45,6 +46,7 @@ struct __memory{
 typedef struct __memory Memory;
 
 unsigned char getNextByte(Memory* mem);
+dword getNextDword(Memory* mem);
 
 void memSetInt (Register *reg, Memory *memory);
 void memSetDouble (DRegister *reg, Memory *memory);
@@ -68,5 +70,7 @@ void memModSingle (Register *reg1, Register *reg2);
 void memOrSingle (Register *reg1, Register *reg2);
 void memAndSingle (Register *reg1, Register *reg2);
 void memXorSingle (Register *reg1, Register *reg2);
+
+void memJmp(unsigned int pos, Memory* memory);
 
 #endif //MEMORY_H

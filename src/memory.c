@@ -9,6 +9,13 @@ unsigned char getNextByte(Memory* mem){
 	return byte;
 }
 
+dword getNextDword(Memory* mem){
+	dword dw;
+	memSetInt(&dw,mem);
+	return dw;
+}
+
+
 void memSetInt (Register *reg, Memory *memory){
 	reg->byte0 = getNextByte(memory);
 	reg->byte1 = getNextByte(memory);
@@ -67,4 +74,11 @@ void memAndSingle (Register *reg1, Register *reg2){
 }
 void memXorSingle (Register *reg1, Register *reg2){
 	reg1->value = reg1->value ^ reg2->value;
+}
+
+void memJmp(unsigned int pos, Memory* memory){
+	if(pos > memory->PCS){
+		exitErr(ERR_JMP_SKIP_INSTRUCTIONS,memory->PC);
+	}
+	memory->PC = pos;
 }
