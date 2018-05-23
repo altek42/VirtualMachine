@@ -64,4 +64,9 @@ void memMulDouble (DRegister *reg1, DRegister *reg2);
 void memDivSingle (Register *reg1, Register *reg2);
 void memDivDouble (DRegister *reg1, DRegister *reg2);
 
+void memModSingle (Register *reg1, Register *reg2);
+void memOrSingle (Register *reg1, Register *reg2);
+void memAndSingle (Register *reg1, Register *reg2);
+void memXorSingle (Register *reg1, Register *reg2);
+
 #endif //MEMORY_H

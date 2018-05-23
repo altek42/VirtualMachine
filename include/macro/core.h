@@ -93,5 +93,13 @@ void executeMem##opr(Memory* memory) { \
 	} \
 }
 
+#define _EXECUTE_MEM_SINGLE_FUNC(opr) \
+void executeMem##opr(Memory* memory) { \
+	unsigned char byte = getNextByte(memory); \
+	switch (byte) { \
+		_CASE_ALL_SINGLE_REG(mem##opr##Single,memory) \
+		default: exitErr(ERR_UNRECOGNIZED_INSTRUCTION, memory->PC); \
+	} \
+}
 
 #endif //CORE_MACROS_H

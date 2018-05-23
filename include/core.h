@@ -16,5 +16,9 @@ void executeMemAdd(Memory* memory);
 void executeMemSub(Memory* memory);
 void executeMemMul(Memory* memory);
 void executeMemDiv(Memory* memory);
+void executeMemMod(Memory* memory);
+void executeMemOr(Memory* memory);
+void executeMemAnd(Memory* memory);
+void executeMemXor(Memory* memory);
 
 #endif //CORE_H

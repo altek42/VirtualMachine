@@ -21,6 +21,11 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		case PR_MUL: executeMemMul(memory); break;
 		case PR_DIV: executeMemDiv(memory); break;
 
+		case PR_MOD: executeMemMod(memory); break;
+		case PR_OR: executeMemOr(memory); break;
+		case PR_AND: executeMemAnd(memory); break;
+		case PR_XOR: executeMemXor(memory); break;
+
 		case PR_SET_AX: memSetDouble(&memory->RA,memory);	break;
 		case PR_SET_BX: memSetDouble(&memory->RB,memory);	break;
 		case PR_SET_CX: memSetDouble(&memory->RC,memory);	break;
@@ -47,3 +52,8 @@ _EXECUTE_MEM_FUNC(Add)
 _EXECUTE_MEM_FUNC(Sub)
 _EXECUTE_MEM_FUNC(Mul)
 _EXECUTE_MEM_FUNC(Div)
+
+_EXECUTE_MEM_SINGLE_FUNC(Mod)
+_EXECUTE_MEM_SINGLE_FUNC(Or)
+_EXECUTE_MEM_SINGLE_FUNC(And)
+_EXECUTE_MEM_SINGLE_FUNC(Xor)

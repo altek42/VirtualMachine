@@ -55,3 +55,16 @@ void memDivSingle (Register *reg1, Register *reg2){
 void memDivDouble (DRegister *reg1, DRegister *reg2){
 	reg1->value = reg1->value / reg2->value;
 }
+
+void memModSingle (Register *reg1, Register *reg2){
+	reg1->value = reg1->value % reg2->value;
+}
+void memOrSingle (Register *reg1, Register *reg2){
+	reg1->value = reg1->value | reg2->value;
+}
+void memAndSingle (Register *reg1, Register *reg2){
+	reg1->value = reg1->value & reg2->value;
+}
+void memXorSingle (Register *reg1, Register *reg2){
+	reg1->value = reg1->value ^ reg2->value;
+}

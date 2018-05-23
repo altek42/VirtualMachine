@@ -20,6 +20,7 @@
 #define PR_OR	0x1c
 #define PR_AND	0x1d
 #define PR_XOR	0x1e
+
 #define PR_JMP	0x1f
 #define PR_JEQ	0x20
 #define PR_JNE	0x21
