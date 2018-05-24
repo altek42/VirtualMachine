@@ -71,8 +71,17 @@ void memOrSingle (Register *reg1, Register *reg2);
 void memAndSingle (Register *reg1, Register *reg2);
 void memXorSingle (Register *reg1, Register *reg2);
 
+void _memJmpPosCheck(unsigned int pos, Memory* memory);
 void memJmp(unsigned int pos, Memory* memory);
 void memJeqSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
 void memJeqDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
+void memJneSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
+void memJneDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
+void memJgtSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
+void memJgtDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
+void memJltSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
+void memJltDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
+
+
 
 #endif //MEMORY_H

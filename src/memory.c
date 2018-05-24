@@ -76,27 +76,70 @@ void memXorSingle (Register *reg1, Register *reg2){
 	reg1->value = reg1->value ^ reg2->value;
 }
 
-void memJmp(unsigned int pos, Memory* memory){
+void _memJmpPosCheck(unsigned int pos, Memory* memory){
 	if(pos > memory->PCS){
 		exitErr(ERR_JMP_SKIP_INSTRUCTIONS,memory->PC);
 	}
+}
+
+void memJmp(unsigned int pos, Memory* memory){
+	_memJmpPosCheck(pos,memory);
 	memory->PC = pos;
 }
 
 void memJeqDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
-	if(pos > memory->PCS){
-		exitErr(ERR_JMP_SKIP_INSTRUCTIONS,memory->PC);
-	}
+	_memJmpPosCheck(pos,memory);
 	if(reg1->value == reg2->value){
 		memory->PC = pos;
 	}
 }
 
 void memJeqSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
-	if(pos > memory->PCS){
-		exitErr(ERR_JMP_SKIP_INSTRUCTIONS,memory->PC);
-	}
+	_memJmpPosCheck(pos,memory);
 	if(reg1->value == reg2->value){
+		memory->PC = pos;
+	}
+}
+
+
+void memJneDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value != reg2->value){
+		memory->PC = pos;
+	}
+}
+
+void memJneSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value != reg2->value){
+		memory->PC = pos;
+	}
+}
+
+void memJgtSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value >= reg2->value){
+		memory->PC = pos;
+	}
+}
+
+void memJgtDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value >= reg2->value){
+		memory->PC = pos;
+	}
+}
+
+void memJltSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value <= reg2->value){
+		memory->PC = pos;
+	}
+}
+
+void memJltDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value <= reg2->value){
 		memory->PC = pos;
 	}
 }
