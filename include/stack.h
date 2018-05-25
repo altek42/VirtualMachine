@@ -9,8 +9,6 @@ struct __stack{
 };
 typedef struct __stack Stack;
 
-void stack_init(Stack* stack);
-void stack_push(Stack* stack, unsigned int data);
-unsigned int stack_pop(Stack* stack);
+void _realloc_stack(Stack* stack, unsigned int size);
 
 #endif //STACK_H

@@ -1,39 +1,38 @@
 #include "../include/stack.h"
+#include "../include/stackFunctions.h"
 
-void stack_init(Stack* stack){
-	stack->top=-1;
-	stack->data=NULL;
+void stack_init(Memory* mem){
+	mem->stack.top=-1;
+	mem->stack.data=NULL;
 }
 
-
-void stack_push(Stack* stack, unsigned int data){
-	(stack->top)++;
-	void *ptr = realloc(stack->data, (stack->top+1) * sizeof(unsigned int));
-	if(ptr == NULL){
-		exitErr(ERR_STACK_PUSH_REALLOC, 0);
-	}
-	stack->data = (unsigned int*) ptr;
-	stack->data[stack->top] = data;
-	printf("PUSH TOP: %d VAL: %d\n", stack->top, data);
+void stack_push(Memory* mem, unsigned int data){
+	(mem->stack.top)++;
+	_realloc_stack(&mem->stack, mem->stack.top+1);
+	mem->stack.data[mem->stack.top] = data;
 }
 
-unsigned int stack_pop(Stack* stack){
-	if(stack->top == -1){
+unsigned int stack_pop(Memory* mem){
+	if(mem->stack.top == -1){
 		exitErr(ERR_STACK_POP_INDEX, 0);
 	}
-	unsigned int value = stack->data[stack->top];
-	if(stack->top == 0){
-		stack->top=-1;
-		free(stack->data);
+	unsigned int value = mem->stack.data[mem->stack.top];
+	if(mem->stack.top == 0){
+		mem->stack.top=-1;
+		free(mem->stack.data);
+		mem->stack.data=NULL;
 		return value;
 	}
 
-	void *ptr = realloc(stack->data, stack->top * sizeof(unsigned int));
+	_realloc_stack(&mem->stack, mem->stack.top);
+	(mem->stack.top)--;
+	return value;
+}
+
+void _realloc_stack(Stack* stack, unsigned int size){
+	void *ptr = realloc(stack->data, size * sizeof(unsigned int));
 	if(ptr == NULL){
-		exitErr(ERR_STACK_POP_REALLOC, 0);
+		exitErr(ERR_STACK_REALLOC, 0);
 	}
 	stack->data = (unsigned int*) ptr;
-	(stack->top)--;
-	printf("POP TOP: %d VAL: %d\n", stack->top, value);
-	return value;
 }

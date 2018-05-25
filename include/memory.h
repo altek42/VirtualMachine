@@ -4,6 +4,7 @@
 #include<stdio.h>
 #include "macro/memory.h"
 #include "error.h"
+#include "stack.h"
 
 /**
 *	Example:
@@ -42,6 +43,7 @@ struct __memory{
 	unsigned int PC;
 	unsigned char* bytecode;
 	unsigned int PCS;
+	Stack stack;
 } __attribute__((packed));
 typedef struct __memory Memory;
 
