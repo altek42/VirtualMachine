@@ -81,7 +81,10 @@ void memJgtSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memo
 void memJgtDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
 void memJltSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
 void memJltDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
-
+void memJgeSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
+void memJgeDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
+void memJleSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
+void memJleDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
 
 
 #endif //MEMORY_H

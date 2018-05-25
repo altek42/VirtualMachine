@@ -29,6 +29,8 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		case PR_JEQ: executeMemJeq(memory); break;
 		case PR_JGT: executeMemJgt(memory); break;
 		case PR_JLT: executeMemJlt(memory); break;
+		case PR_JGE: executeMemJlt(memory); break;
+		case PR_JLE: executeMemJlt(memory); break;
 
 		case PR_SET_AX: memSetDouble(&memory->RA,memory);	break;
 		case PR_SET_BX: memSetDouble(&memory->RB,memory);	break;
@@ -71,3 +73,5 @@ void executeMemJmp(Memory* memory){
 _EXECUTE_MEM_JMP(Jeq)
 _EXECUTE_MEM_JMP(Jgt)
 _EXECUTE_MEM_JMP(Jlt)
+_EXECUTE_MEM_JMP(Jge)
+_EXECUTE_MEM_JMP(Jle)

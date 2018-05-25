@@ -93,7 +93,6 @@ void memJeqDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* me
 		memory->PC = pos;
 	}
 }
-
 void memJeqSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
 	_memJmpPosCheck(pos,memory);
 	if(reg1->value == reg2->value){
@@ -108,7 +107,6 @@ void memJneDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* me
 		memory->PC = pos;
 	}
 }
-
 void memJneSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
 	_memJmpPosCheck(pos,memory);
 	if(reg1->value != reg2->value){
@@ -118,26 +116,52 @@ void memJneSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memo
 
 void memJgtSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
 	_memJmpPosCheck(pos,memory);
-	if(reg1->value >= reg2->value){
+	if(reg1->value > reg2->value){
 		memory->PC = pos;
 	}
 }
-
 void memJgtDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
 	_memJmpPosCheck(pos,memory);
-	if(reg1->value >= reg2->value){
+	if(reg1->value > reg2->value){
 		memory->PC = pos;
 	}
 }
 
 void memJltSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
 	_memJmpPosCheck(pos,memory);
-	if(reg1->value <= reg2->value){
+	if(reg1->value < reg2->value){
+		memory->PC = pos;
+	}
+}
+void memJltDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value < reg2->value){
 		memory->PC = pos;
 	}
 }
 
-void memJltDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
+
+void memJgeSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value >= reg2->value){
+		memory->PC = pos;
+	}
+}
+void memJgeDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value >= reg2->value){
+		memory->PC = pos;
+	}
+}
+
+
+void memJleSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	if(reg1->value <= reg2->value){
+		memory->PC = pos;
+	}
+}
+void memJleDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory){
 	_memJmpPosCheck(pos,memory);
 	if(reg1->value <= reg2->value){
 		memory->PC = pos;
