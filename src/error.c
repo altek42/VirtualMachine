@@ -14,6 +14,9 @@ char* __getErrMsg(int code){
 		CASE_RET(ERR_UNRECOGNIZED_INSTRUCTION, "Unrecognized instruction.");
 		CASE_RET(ERR_END_OF_INSTRUCTIONS, "Unexpected end of instructions.");
 		CASE_RET(ERR_JMP_SKIP_INSTRUCTIONS, "Jump out of memory.");
+		CASE_RET(ERR_STACK_PUSH_REALLOC, "Can not reallocate memory for stack.");
+		CASE_RET(ERR_STACK_POP_REALLOC, "Can not reallocate memory for stack.");
+		CASE_RET(ERR_STACK_POP_INDEX, "Can not pop from empty stack.");
 		CASE_RET(ERR_NO_IMPLEMENTATION, "No implementation yet.");
 	}
 	return "";
