@@ -8,7 +8,7 @@ void stack_init(Memory* mem){
 
 void stack_push(Memory* mem, unsigned int data){
 	(mem->stack.top)++;
-	_realloc_stack(&mem->stack, mem->stack.top+1);
+	_realloc_stack(mem, mem->stack.top+1);
 	mem->stack.data[mem->stack.top] = data;
 }
 
@@ -24,15 +24,15 @@ unsigned int stack_pop(Memory* mem){
 		return value;
 	}
 
-	_realloc_stack(&mem->stack, mem->stack.top);
+	_realloc_stack(mem, mem->stack.top);
 	(mem->stack.top)--;
 	return value;
 }
 
-void _realloc_stack(Stack* stack, unsigned int size){
-	void *ptr = realloc(stack->data, size * sizeof(unsigned int));
+void _realloc_stack(Memory* mem, unsigned int size){
+	void *ptr = realloc(mem->stack.data, size * sizeof(unsigned int));
 	if(ptr == NULL){
-		exitErr(ERR_STACK_REALLOC, 0);
+		exitErr(ERR_STACK_REALLOC, mem->PC);
 	}
-	stack->data = (unsigned int*) ptr;
+	mem->stack.data = (unsigned int*) ptr;
 }
