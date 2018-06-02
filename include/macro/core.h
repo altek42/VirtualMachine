@@ -186,4 +186,21 @@ void executeMem##opr(Memory* memory) { \
 	} \
 }
 
+
+#define _CASE_SINGLE(instruction, func) \
+case PR_##instruction##_AL: func(&memory->RA.low,memory);	break; \
+case PR_##instruction##_AH: func(&memory->RA.high,memory);	break; \
+case PR_##instruction##_BL: func(&memory->RB.low,memory);	break; \
+case PR_##instruction##_BH: func(&memory->RB.high,memory);	break; \
+case PR_##instruction##_CL: func(&memory->RC.low,memory);	break; \
+case PR_##instruction##_CH: func(&memory->RC.high,memory);	break; \
+case PR_##instruction##_DL: func(&memory->RD.low,memory);	break; \
+case PR_##instruction##_DH: func(&memory->RD.high,memory);	break;
+
+#define _CASE_DOUBLE(instruction,func) \
+case PR_##instruction##_AX: func(&memory->RA,memory);	break; \
+case PR_##instruction##_BX: func(&memory->RB,memory);	break; \
+case PR_##instruction##_CX: func(&memory->RC,memory);	break; \
+case PR_##instruction##_DX: func(&memory->RD,memory);	break;
+
 #endif //CORE_MACROS_H

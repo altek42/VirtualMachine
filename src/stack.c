@@ -2,7 +2,7 @@
 #include "../include/stackFunctions.h"
 
 void stack_init(Memory* mem){
-	mem->stack.top=-1;
+	mem->stack.top=0;
 	mem->stack.data=NULL;
 }
 
@@ -23,7 +23,6 @@ unsigned int stack_pop(Memory* mem){
 		mem->stack.data=NULL;
 		return value;
 	}
-
 	_realloc_stack(mem, mem->stack.top);
 	(mem->stack.top)--;
 	return value;

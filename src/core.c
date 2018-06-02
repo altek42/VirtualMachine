@@ -32,19 +32,11 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		case PR_JGE: executeMemJlt(memory); break;
 		case PR_JLE: executeMemJlt(memory); break;
 
-		case PR_SET_AX: memSetDouble(&memory->RA,memory);	break;
-		case PR_SET_BX: memSetDouble(&memory->RB,memory);	break;
-		case PR_SET_CX: memSetDouble(&memory->RC,memory);	break;
-		case PR_SET_DX: memSetDouble(&memory->RD,memory);	break;
+		_CASE_DOUBLE(SET,memSetDouble)
+		_CASE_SINGLE(SET,memSetInt)
 
-		case PR_SET_AL: memSetInt(&memory->RA.low,memory);	break;
-		case PR_SET_AH: memSetInt(&memory->RA.high,memory);	break;
-		case PR_SET_BL: memSetInt(&memory->RB.low,memory);	break;
-		case PR_SET_BH: memSetInt(&memory->RB.high,memory);	break;
-		case PR_SET_CL: memSetInt(&memory->RC.low,memory);	break;
-		case PR_SET_CH: memSetInt(&memory->RC.high,memory);	break;
-		case PR_SET_DL: memSetInt(&memory->RD.low,memory);	break;
-		case PR_SET_DH: memSetInt(&memory->RD.high,memory);	break;
+		_CASE_SINGLE(PUSH,memPush)
+		_CASE_SINGLE(POP,memPop)
 
 		case PR_NONE: break;
 		case PR_EXIT: return 0b0;

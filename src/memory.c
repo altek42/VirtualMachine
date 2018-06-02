@@ -15,19 +15,6 @@ dword getNextDword(Memory* mem){
 	return dw;
 }
 
-
-void memSetInt (Register *reg, Memory *memory){
-	reg->byte0 = getNextByte(memory);
-	reg->byte1 = getNextByte(memory);
-	reg->byte2 = getNextByte(memory);
-	reg->byte3 = getNextByte(memory);
-}
-
-void memSetDouble (DRegister *reg, Memory *memory){
-	memSetInt(&reg->low,memory);
-	memSetInt(&reg->high,memory);
-}
-
 void memMovSingle(Register *reg1, Register *reg2){
 	reg1->value = reg2->value;
 }
@@ -166,4 +153,25 @@ void memJleDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* me
 	if(reg1->value <= reg2->value){
 		memory->PC = pos;
 	}
+}
+
+void memSetInt (Register *reg, Memory *memory){
+	reg->byte0 = getNextByte(memory);
+	reg->byte1 = getNextByte(memory);
+	reg->byte2 = getNextByte(memory);
+	reg->byte3 = getNextByte(memory);
+}
+
+void memSetDouble (DRegister *reg, Memory *memory){
+	memSetInt(&reg->low,memory);
+	memSetInt(&reg->high,memory);
+}
+
+void memPush(Register* reg, Memory *memory){
+	stack_push(memory, reg->value);
+}
+
+void memPop(Register* reg, Memory *memory){
+	unsigned int a = stack_pop(memory);
+	reg->value = a;
 }

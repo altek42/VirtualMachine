@@ -50,9 +50,6 @@ typedef struct __memory Memory;
 unsigned char getNextByte(Memory* mem);
 dword getNextDword(Memory* mem);
 
-void memSetInt (Register *reg, Memory *memory);
-void memSetDouble (DRegister *reg, Memory *memory);
-
 void memMovSingle (Register *reg1, Register *reg2);
 void memMovDouble (DRegister *reg1, DRegister *reg2);
 
@@ -88,5 +85,10 @@ void memJgeDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* me
 void memJleSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
 void memJleDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
 
+void memPush(Register* reg, Memory *memory);
+void memPop(Register* reg, Memory *memory);
+
+void memSetInt (Register *reg, Memory *memory);
+void memSetDouble (DRegister *reg, Memory *memory);
 
 #endif //MEMORY_H

@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]) {
 	mem.RB.value=0.0;
 	mem.RC.value=0.0;
 	mem.RD.value=0.0;
-	stack_init(mem);
+	stack_init(&mem);
 
 	Program(&mem);
 
