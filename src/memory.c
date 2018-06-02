@@ -15,6 +15,18 @@ dword getNextDword(Memory* mem){
 	return dw;
 }
 
+void memSetInt (Register *reg, Memory *memory){
+	reg->byte0 = getNextByte(memory);
+	reg->byte1 = getNextByte(memory);
+	reg->byte2 = getNextByte(memory);
+	reg->byte3 = getNextByte(memory);
+}
+
+void memSetDouble (DRegister *reg, Memory *memory){
+	memSetInt(&reg->low,memory);
+	memSetInt(&reg->high,memory);
+}
+
 void memMovSingle(Register *reg1, Register *reg2){
 	reg1->value = reg2->value;
 }
@@ -155,16 +167,14 @@ void memJleDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* me
 	}
 }
 
-void memSetInt (Register *reg, Memory *memory){
-	reg->byte0 = getNextByte(memory);
-	reg->byte1 = getNextByte(memory);
-	reg->byte2 = getNextByte(memory);
-	reg->byte3 = getNextByte(memory);
+void memCall(unsigned int pos, Memory* memory){
+	_memJmpPosCheck(pos,memory);
+	stack_push(memory, memory->PC);
+	memory->PC = pos;
 }
 
-void memSetDouble (DRegister *reg, Memory *memory){
-	memSetInt(&reg->low,memory);
-	memSetInt(&reg->high,memory);
+void memRet(Memory* memory){
+	memory->PC = stack_pop(memory);
 }
 
 void memPush(Register* reg, Memory *memory){
@@ -172,6 +182,5 @@ void memPush(Register* reg, Memory *memory){
 }
 
 void memPop(Register* reg, Memory *memory){
-	unsigned int a = stack_pop(memory);
-	reg->value = a;
+	reg->value = stack_pop(memory);
 }

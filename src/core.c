@@ -3,6 +3,7 @@
 void Program(Memory* memory){
 	unsigned char byte;
 	do {
+		printf("PC: %x\n", memory->PC);
 		byte = getNextByte(memory);
 		byte = execute(byte, memory);
 	} while(byte);
@@ -31,6 +32,8 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		case PR_JLT: executeMemJlt(memory); break;
 		case PR_JGE: executeMemJlt(memory); break;
 		case PR_JLE: executeMemJlt(memory); break;
+		case PR_CALL: executeMemCall(memory); break;
+		case PR_RET: executeMemRet(memory); break;
 
 		_CASE_DOUBLE(SET,memSetDouble)
 		_CASE_SINGLE(SET,memSetInt)
@@ -60,6 +63,13 @@ _EXECUTE_MEM_SINGLE_FUNC(Xor)
 void executeMemJmp(Memory* memory){
 	dword dw = getNextDword(memory);
 	memJmp(dw.value,memory);
+}
+void executeMemCall(Memory* memory){
+	dword dw = getNextDword(memory);
+	memCall(dw.value,memory);
+}
+void executeMemRet(Memory* memory){
+	memRet(memory);
 }
 
 _EXECUTE_MEM_JMP(Jeq)

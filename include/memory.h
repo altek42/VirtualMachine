@@ -84,6 +84,8 @@ void memJgeSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memo
 void memJgeDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
 void memJleSingle(unsigned int pos, Register *reg1, Register *reg2, Memory* memory);
 void memJleDouble(unsigned int pos, DRegister *reg1, DRegister *reg2, Memory* memory);
+void memCall(unsigned int pos, Memory* memory);
+void memRet(Memory* memory);
 
 void memPush(Register* reg, Memory *memory);
 void memPop(Register* reg, Memory *memory);

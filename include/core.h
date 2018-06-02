@@ -27,5 +27,7 @@ void executeMemJgt(Memory* memory);
 void executeMemJlt(Memory* memory);
 void executeMemJge(Memory* memory);
 void executeMemJle(Memory* memory);
+void executeMemCall(Memory* memory);
+void executeMemRet(Memory* memory);
 
 #endif //CORE_H
