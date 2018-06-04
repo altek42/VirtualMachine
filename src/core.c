@@ -41,6 +41,15 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		_CASE_SINGLE(PUSH,memPush)
 		_CASE_SINGLE(POP,memPop)
 
+		_CASE_DOUBLE(NOT,memNotDouble)
+		_CASE_SINGLE(NOT,memNotSingle)
+
+		_CASE_DOUBLE(SHL,memShlDouble)
+		_CASE_SINGLE(SHL,memShlSingle)
+
+		_CASE_DOUBLE(SHR,memShrDouble)
+		_CASE_SINGLE(SHR,memShrSingle)
+
 		case PR_NONE: break;
 		case PR_EXIT: return 0b0;
 		default:

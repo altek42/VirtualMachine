@@ -184,3 +184,28 @@ void memPush(Register* reg, Memory *memory){
 void memPop(Register* reg, Memory *memory){
 	reg->value = stack_pop(memory);
 }
+
+void memNotSingle(Register* reg, Memory* memory){
+	reg->value = ~(reg->value);
+}
+void memNotDouble(DRegister* reg, Memory* memory){
+	reg->lvalue = ~(reg->lvalue);
+}
+
+void memShlSingle(Register* reg, Memory* memory){
+	unsigned char byte = getNextByte(memory);
+	reg->value = reg->value << byte;
+}
+void memShlDouble(DRegister* reg, Memory* memory){
+	unsigned char byte = getNextByte(memory);
+	reg->lvalue = reg->lvalue << byte;
+}
+
+void memShrSingle(Register* reg, Memory* memory){
+	unsigned char byte = getNextByte(memory);
+	reg->value = reg->value >> byte;
+}
+void memShrDouble(DRegister* reg, Memory* memory){
+	unsigned char byte = getNextByte(memory);
+	reg->lvalue = reg->lvalue >> byte;
+}

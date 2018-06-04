@@ -24,6 +24,8 @@ int main(int argc, char const *argv[]) {
 	mem.RD.value=0.0;
 	stack_init(&mem);
 
+	printf("%d, %d\n",sizeof(double), sizeof(unsigned long long) );
+
 	Program(&mem);
 
 	free(bytecode);

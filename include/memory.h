@@ -28,6 +28,7 @@ typedef union __dword dword;
 
 union __double_register{
 	double value;
+	unsigned long long lvalue;
 	struct{
 		Register low;
 		Register high;
@@ -93,4 +94,12 @@ void memPop(Register* reg, Memory *memory);
 void memSetInt (Register *reg, Memory *memory);
 void memSetDouble (DRegister *reg, Memory *memory);
 
+void memNotSingle(Register* reg, Memory* memory);
+void memNotDouble(DRegister* reg, Memory* memory);
+
+void memShlSingle(Register* reg, Memory* memory);
+void memShlDouble(DRegister* reg, Memory* memory);
+
+void memShrSingle(Register* reg, Memory* memory);
+void memShrDouble(DRegister* reg, Memory* memory);
 #endif //MEMORY_H
