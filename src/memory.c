@@ -209,3 +209,18 @@ void memShrDouble(DRegister* reg, Memory* memory){
 	unsigned char byte = getNextByte(memory);
 	reg->lvalue = reg->lvalue >> byte;
 }
+
+void memLoadSingle(Register* reg, Memory* memory){
+	dword address = getNextDword(memory);
+	unsigned int pos = memory->PC;
+	memory->PC = address.value;
+	memSetInt(reg,memory);
+	memory->PC = pos;
+}
+void memLoadDouble(DRegister* reg, Memory* memory){
+	dword address = getNextDword(memory);
+	unsigned int pos = memory->PC;
+	memory->PC = address.value;
+	memSetDouble(reg,memory);
+	memory->PC = pos;
+}

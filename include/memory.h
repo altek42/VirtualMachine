@@ -102,4 +102,8 @@ void memShlDouble(DRegister* reg, Memory* memory);
 
 void memShrSingle(Register* reg, Memory* memory);
 void memShrDouble(DRegister* reg, Memory* memory);
+
+void memLoadSingle(Register* reg, Memory* memory);
+void memLoadDouble(DRegister* reg, Memory* memory);
+
 #endif //MEMORY_H

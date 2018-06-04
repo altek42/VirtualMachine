@@ -3,7 +3,7 @@
 void Program(Memory* memory){
 	unsigned char byte;
 	do {
-		printf("PC: %x\n", memory->PC);
+		// printf("PC: %x\n", memory->PC);
 		byte = getNextByte(memory);
 		byte = execute(byte, memory);
 	} while(byte);
@@ -49,6 +49,9 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 
 		_CASE_DOUBLE(SHR,memShrDouble)
 		_CASE_SINGLE(SHR,memShrSingle)
+
+		_CASE_DOUBLE(LOAD,memLoadDouble)
+		_CASE_SINGLE(LOAD,memLoadSingle)
 
 		case PR_NONE: break;
 		case PR_EXIT: return 0b0;
