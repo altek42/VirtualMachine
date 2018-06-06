@@ -129,13 +129,13 @@
 #define PR_STORE_DL	0x7e
 #define PR_STORE_DH	0x7f
 
-#define PR_CT_INT_A	0x80
-#define PR_CT_DOU_A	0x81
-#define PR_CT_INT_B	0x82
-#define PR_CT_DOU_B	0x83
-#define PR_CT_INT_C	0x84
-#define PR_CT_DOU_C	0x85
-#define PR_CT_INT_D	0x86
-#define PR_CT_DOU_D	0x87
+#define PR_CT_INT_AX	0x80
+#define PR_CT_DOU_AX	0x81
+#define PR_CT_INT_BX	0x82
+#define PR_CT_DOU_BX	0x83
+#define PR_CT_INT_CX	0x84
+#define PR_CT_DOU_CX	0x85
+#define PR_CT_INT_DX	0x86
+#define PR_CT_DOU_DX	0x87
 
 #endif //INSTRUCTIONS_H

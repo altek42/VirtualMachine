@@ -57,6 +57,9 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 		_CASE_DOUBLE(STORE,memStoreDouble)
 		_CASE_SINGLE(STORE,memStoreSingle)
 
+		_CASE_CONVERT(CT_INT,memConvertToInt)
+		_CASE_CONVERT(CT_DOU,memConvertToDouble)
+
 		case PR_NONE: break;
 		case PR_EXIT: return 0b0;
 		default:

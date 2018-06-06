@@ -114,4 +114,7 @@ void _storeDouble(unsigned int pos, DRegister* reg, Memory* mem);
 void memStoreSingle(Register* reg, Memory* memory);
 void memStoreDouble(DRegister* reg, Memory* memory);
 
+void memConvertToInt(DRegister* reg);
+void memConvertToDouble(DRegister* reg);
+
 #endif //MEMORY_H

@@ -253,3 +253,13 @@ void memStoreDouble(DRegister* reg, Memory* memory){
 	_checkMemPos(pos+7,memory);
 	_storeDouble(pos,reg,memory);
 }
+
+void memConvertToInt(DRegister* reg){
+	double val = reg->value;
+	reg->high.value=0;
+	reg->low.value=(unsigned int)val;
+}
+void memConvertToDouble(DRegister* reg){
+	unsigned int val = reg->low.value;
+	reg->value = (double)val;
+}

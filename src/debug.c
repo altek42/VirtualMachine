@@ -4,7 +4,7 @@ void showMemory(Memory* mem){
 	size_t i;
 	size_t width=0;
 	size_t height=0;
-	printf("\nOffset(h)    ");
+	printf("\n\nOffset(h)    ");
 	for(width=0;width<16;width++){
 		printf("%02X  ", width);
 	}
@@ -15,7 +15,7 @@ void showMemory(Memory* mem){
 	for(i=0;i<mem->PCS;i++){
 		if(width==0){
 			printf("\n %08X    ", height);
-			height+=0x1;
+			height+=0x10;
 		}
 		width+=1;
 		if(width>=16){
@@ -23,4 +23,5 @@ void showMemory(Memory* mem){
 		}
 		printf("%02X  ", mem->bytecode[i]);
 	}
+	printf("\n\n\n");
 }

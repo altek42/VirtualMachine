@@ -2,7 +2,7 @@
 #include "../include/errorCode.h"
 
 void exitErr(const int code, const unsigned int pc){
-	fprintf(stderr, "\nError: %d: %s (PC: 0x%x)\n", code, __getErrMsg(code), pc);
+	fprintf(stderr, "\nError: %d: %s (PC: 0x%x)\n", code, __getErrMsg(code), pc-1);
 	exit(code);
 }
 

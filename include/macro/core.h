@@ -203,4 +203,10 @@ case PR_##instruction##_BX: func(&memory->RB,memory);	break; \
 case PR_##instruction##_CX: func(&memory->RC,memory);	break; \
 case PR_##instruction##_DX: func(&memory->RD,memory);	break;
 
+#define _CASE_CONVERT(instruction,func) \
+case PR_##instruction##_AX: func(&memory->RA);	break; \
+case PR_##instruction##_BX: func(&memory->RB);	break; \
+case PR_##instruction##_CX: func(&memory->RC);	break; \
+case PR_##instruction##_DX: func(&memory->RD);	break;
+
 #endif //CORE_MACROS_H
