@@ -7,6 +7,7 @@
 #include "instructions.h"
 #include "instructionsTarget.h"
 #include "error.h"
+#include "debug.h"
 #include "io.h"
 
 void Program(Memory* memory);

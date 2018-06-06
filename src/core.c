@@ -7,6 +7,7 @@ void Program(Memory* memory){
 		byte = getNextByte(memory);
 		byte = execute(byte, memory);
 	} while(byte);
+	showMemory(memory);
 }
 
 unsigned char execute(unsigned char instruction, Memory* memory){
@@ -52,6 +53,9 @@ unsigned char execute(unsigned char instruction, Memory* memory){
 
 		_CASE_DOUBLE(LOAD,memLoadDouble)
 		_CASE_SINGLE(LOAD,memLoadSingle)
+
+		_CASE_DOUBLE(STORE,memStoreDouble)
+		_CASE_SINGLE(STORE,memStoreSingle)
 
 		case PR_NONE: break;
 		case PR_EXIT: return 0b0;

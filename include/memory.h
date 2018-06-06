@@ -51,6 +51,8 @@ typedef struct __memory Memory;
 unsigned char getNextByte(Memory* mem);
 dword getNextDword(Memory* mem);
 
+void _checkMemPos(unsigned int pos, Memory* mem);
+
 void memMovSingle (Register *reg1, Register *reg2);
 void memMovDouble (DRegister *reg1, DRegister *reg2);
 
@@ -105,5 +107,11 @@ void memShrDouble(DRegister* reg, Memory* memory);
 
 void memLoadSingle(Register* reg, Memory* memory);
 void memLoadDouble(DRegister* reg, Memory* memory);
+
+void _storeInt(unsigned int pos, Register* reg, Memory* mem);
+void _storeDouble(unsigned int pos, DRegister* reg, Memory* mem);
+
+void memStoreSingle(Register* reg, Memory* memory);
+void memStoreDouble(DRegister* reg, Memory* memory);
 
 #endif //MEMORY_H

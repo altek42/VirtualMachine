@@ -3,10 +3,14 @@
 unsigned char getNextByte(Memory* mem){
 	unsigned char byte = mem->bytecode[mem->PC];
 	mem->PC += 1;
-	if(mem->PC > mem->PCS){
+	_checkMemPos(mem->PC,mem);
+	return byte;
+}
+
+void _checkMemPos(unsigned int pos, Memory* mem){
+	if(pos > mem->PCS){
 		exitErr(ERR_END_OF_INSTRUCTIONS,mem->PC);
 	}
-	return byte;
 }
 
 dword getNextDword(Memory* mem){
@@ -223,4 +227,29 @@ void memLoadDouble(DRegister* reg, Memory* memory){
 	memory->PC = address.value;
 	memSetDouble(reg,memory);
 	memory->PC = pos;
+}
+
+void _storeInt(unsigned int pos, Register* reg, Memory* mem){
+	mem->bytecode[pos] = reg->byte0;
+	mem->bytecode[pos+1] = reg->byte1;
+	mem->bytecode[pos+2] = reg->byte2;
+	mem->bytecode[pos+3] = reg->byte3;
+}
+
+void _storeDouble(unsigned int pos, DRegister* reg, Memory* mem){
+	_storeInt(pos, &reg->low,mem);
+	_storeInt(pos+4, &reg->high,mem);
+}
+
+void memStoreSingle(Register* reg, Memory* memory){
+	dword address = getNextDword(memory);
+	unsigned int pos = address.value;
+	_checkMemPos(pos+3,memory);
+	_storeInt(pos,reg,memory);
+}
+void memStoreDouble(DRegister* reg, Memory* memory){
+	dword address = getNextDword(memory);
+	unsigned int pos = address.value;
+	_checkMemPos(pos+7,memory);
+	_storeDouble(pos,reg,memory);
 }
